@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1><center>Welcome to Pair</center></h1>
+	<p><center>Here are the events</center></p>
+	{% for event in events %}
+	<p><center>{{ event.name }}</center></p>
+	{% endfor %}
+{% endblock %}
