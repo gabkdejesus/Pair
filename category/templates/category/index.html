@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1><center>Categories</center></h1>
+	{% for category in categories %}
+	<h2><center><a href="{% url 'view category' pk=category.id %}">{{ category.name }}</a></center></h2>
+	<p><center>{{ category.desc }}</center></p>
+	{% endfor %}
+{% endblock %}

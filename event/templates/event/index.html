@@ -3,6 +3,6 @@
 	<h1><center>Welcome to Pair</center></h1>
 	<p><center>Here are the events</center></p>
 	{% for event in events %}
-	<p><center>{{ event.name }}</center></p>
+	<p><center><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></center></p>
 	{% endfor %}
 {% endblock %}

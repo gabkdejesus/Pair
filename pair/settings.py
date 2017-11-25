@@ -112,6 +112,9 @@ LOGOUT_REDIRECT_URL = 'index'
 #Login Url
 LOGIN_REDIRECT_URL = 'index'
 
+#Login Url
+LOGIN_URL = 'login'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

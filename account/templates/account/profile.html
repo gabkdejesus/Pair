@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1><center>Your Profile</center></h1>
+	<center><strong>Username:</strong> {{ request.user.username }}</center>
+	<center><strong>Email:</strong> {{ request.user.email }}</center>
+	<h2><center>Your Events</center></h2>
+	{% for event in events %}
+	<p><center><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></center></p>
+	{% endfor %}
+{% endblock %}

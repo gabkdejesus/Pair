@@ -10,9 +10,11 @@ class Event(models.Model):
 	venue = models.CharField(max_length=255)
 	start = models.DateTimeField()
 	end = models.DateTimeField()
+	created = models.DateTimeField()
 	sponsored = models.BooleanField(default=False)
 	posted_by = models.ForeignKey(User) 
-	category = models.ManyToManyField(Category)
+	category = models.ManyToManyField(Category, related_name='event')
+	users = models.ManyToManyField(User, related_name='events')
 	
 	def __str__ (self):
 		return self.name

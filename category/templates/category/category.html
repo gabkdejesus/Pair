@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1><center>{{ category.name }}</center></h1>
+<h3><center>{{ category.desc }}</center></h3>
+<center><table class="table table-bordered" style="border: 1px solid black; ">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Venue</th>
+			<th>Start</th>
+			<th>End</th>
+			<th>Sponsored</th>
+			<th>Posted By</th>
+			<th>Category</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for event in events %}
+		<tr>
+			<th scope="row"><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></th>
+			<td>{{ event.desc }}</td>
+			<td>{{ event.venue }}</td>
+			<td>{{ event.start }}</td>
+			<td>{{ event.end }}</td>
+			<td>{{ event.sponsored }}</td>
+			<td>{{ event.posted_by }}</td>
+			<td>{% for category in event.category.all %}{{ category }} {% endfor %}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+</center>
+{% endblock %}
