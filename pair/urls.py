@@ -12,6 +12,7 @@ urlpatterns = [
 	url(r'^signup/$', account_views.signup, name='signup'),
 	url(r'^login/$', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
+    url(r'^profile/(?P<pk>\d+)/$', account_views.view_profile, name='view profile'),
     url(r'^profile/$', account_views.profile, name='profile'),
     url(r'^event/create/$', event_views.make_event, name='create event'),
     url(r'^event/(?P<pk>\d+)/$', event_views.view_event, name='view event'),

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1><center>{{ category.name }}</center></h1>
-<h3><center>{{ category.desc }}</center></h3>
+<p><center>{{ category.desc }}</center></p>
 <center><table class="table table-bordered" style="border: 1px solid black; ">
 	<thead>
 		<tr>
@@ -25,7 +25,7 @@
 			<td>{{ event.end }}</td>
 			<td>{{ event.sponsored }}</td>
 			<td>{{ event.posted_by }}</td>
-			<td>{% for category in event.category.all %}{{ category }} {% endfor %}</td>
+			<td>{% for category in event.category.all %}{{ category }}, {% endfor %}</td>
 		</tr>
 		{% endfor %}
 	</tbody>

@@ -11,8 +11,11 @@ from .forms import SignUpForm
 
 @login_required
 def profile(request):
-	events = request.user.event_set.all()
-	return render(request, 'account/profile.html', {'events': events})
+	# Many to many relationship
+	user = User.objects.filter(pk=request.user.id)
+	events = Event.objects.filter(users__in=user)
+	created_events = Event.objects.filter(posted_by=request.user)
+	return render(request, 'account/profile.html', {'created_events': created_events, 'events': events})
 
 def signup(request):
 	if request.method == 'POST':
@@ -25,11 +28,10 @@ def signup(request):
 		form = SignUpForm()
 	return render(request, 'account/signup.html', {'form': form})
 
-
-def update_profile(request, user_id):
-	user = User.objects.get(pk=user_id)
-	user.profile.bio = 'This user does not have a bio yet!'
-	user.profile.gender = 'none'
-	user.profile.birth_date = datetime.now()
-	user.save()
-
+def view_profile(request, pk):
+	"""View a user's profile"""
+	user = User.objects.filter(pk=pk)
+	events = Event.objects.filter(users__in=user)
+	created_events = Event.objects.filter(posted_by=user)
+	user = User.objects.get(pk=pk)
+	return render(request, 'account/viewprofile.html', {'created_events': created_events, 'events': events, 'user': user})

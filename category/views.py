@@ -11,6 +11,6 @@ def index(request):
 
 def view_category(request, pk):
 	"""View all of the events under a category"""
-	category = Category.objects.get(pk=pk)
-	events = Event.objects.filter(category = category)
-	return render(request, 'category/category.html', {'category': category, 'events': events})
+	category = Category.objects.filter(pk=pk)
+	events = Event.objects.filter(category__in=category)
+	return render(request, 'category/category.html', {'category': category[0], 'events': events})

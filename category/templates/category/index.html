@@ -2,7 +2,10 @@
 {% block content %}
 	<h1><center>Categories</center></h1>
 	{% for category in categories %}
-	<h2><center><a href="{% url 'view category' pk=category.id %}">{{ category.name }}</a></center></h2>
-	<p><center>{{ category.desc }}</center></p>
+	<div class="category">
+		<h2><center><a href="{% url 'view category' pk=category.id %}">{{ category.name }}</a></center></h2>
+		<p><center><strong>{{ category.event.all|length }} event(s)</strong></center></p>
+		<p><center>{{ category.desc }}</center></p>
+	</div>
 	{% endfor %}
 {% endblock %}

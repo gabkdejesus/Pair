@@ -1,43 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-<center><table class="table table-bordered" style="border: 1px solid black; ">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Venue</th>
-			<th>Start</th>
-			<th>End</th>
-			<th>Sponsored</th>
-			<th>Posted By</th>
-			<th>Category</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th scope="row">{{ event.name }}</th>
-			<td>{{ event.desc }}</td>
-			<td>{{ event.venue }}</td>
-			<td>{{ event.start }}</td>
-			<td>{{ event.end }}</td>
-			<td>{{ event.sponsored }}</td>
-			<td>{{ event.posted_by }}</td>
-			<td>{% for category in event.category.all %}{{ category }} {% endfor %}</td>
-		</tr>
-	</tbody>
-</table>
+<h1>{{ event.name }}</h1>
+
+<p><strong>Description:</strong> {{ event.desc}}</p>
+<p><strong>Venue:</strong> {{ event.venue}}</p>
+<p><strong>Start:</strong> {{ event.start}}</p>
+<p><strong>End:</strong> {{ event.end}}</p>
+<p><strong>Sponsored:</strong> {{ event.sponsored}}</p>
+<p><strong>Posted By:</strong> {{ event.posted_by}}</p>
+<p><strong>Categories:</strong>
+	{% for category in event.category.all %}
+	{{ category }}, 
+	{% endfor %}
+</p>
+	
+
+
 {% if request.user not in event.users.all %}
-<p><a href="{% url 'going to event' pk=event.id %}">Are you going to {{ event.name }}?</a></p>
+<p><a class="btn btn-info" href="{% url 'going to event' pk=event.id %}">Are you going to {{ event.name }}?</a></p>
 {% endif %}
 
 <h2>People going to {{ event.name }}</h2>
 {% if not event.users.all %}
-<p>No one is going to this event! Be the first.</p>
+<p>Noone's going to this event yet. Be the first!</p>
 {% endif %}
 <ul>
 	{% for user in event.users.all %}
-	<li>{{ user.username }}</li>
+	<li><a href="{% url 'view profile' pk=user.id %}">{{ user.username }}</a></li>
 	{% endfor %}
 </ul>
-</center>
 {% endblock %}

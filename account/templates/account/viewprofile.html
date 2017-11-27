@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h1><center>Your Profile</center></h1>
-	<center><strong>Username:</strong> {{ request.user.username }}</center>
-	<center><strong>Email:</strong> {{ request.user.email }}</center>
+	<h1><center>{{ user.username }}'s Profile</center></h1>
+	<center><strong>Username:</strong> {{ user.username }}</center>
+	<center><strong>Email:</strong> {{ user.email }}</center>
 
-	<h1><center>Your Created Events</center></h1>
+	<h1><center>{{ user.username }}'s Created Events</center></h1>
 	{% for event in created_events %}
 	<p><center><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></center></p>
 	{% endfor %}
@@ -13,7 +13,7 @@
 	<p><center>You haven't created any events. Click <a href="{% url 'create event' %}">here</a> to create one!</center></p>
 	{% endif %}
 
-	<h1><center>Going To</center></h1>
+	<h1><center>{{ user.username }} Is Going To</center></h1>
 	{% for event in events %}
 	<p><center><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></center></p>
 	{% endfor %}

@@ -1,0 +1,32 @@
+h1 {
+	margin: 0.5em 0;
+}
+
+li {
+	list-style: none !important;
+}
+
+/* Category Index */
+.category {
+	margin: 3em !important
+}
+
+.category p {
+	margin: 0;
+}
+
+/* Navbar items */
+span.welcome {
+	color: white;
+	padding-left: 1em;
+}
+
+nav .navbar-item {
+	color: grey;
+	transition: 0.5s;
+	margin: 0 1em;
+}
+
+nav .navbar-item:hover {
+	color: white;
+}

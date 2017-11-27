@@ -19,11 +19,12 @@ def make_event(request):
 	if request.method == 'POST':
 		form = EventForm(request.POST)
 		if form.is_valid():
-			form = form.save(commit=False)
+			new_form = form.save(commit=False)
 			curr_user = request.user
-			form.posted_by = curr_user
-			form.created = datetime.now()
-			form = form.save()
+			new_form.posted_by = curr_user
+			new_form.created = datetime.now()
+			new_form = form.save()
+			form = form.save_m2m()
 			return redirect(reverse('index'))
 	else:
 		form = EventForm()
@@ -34,13 +35,11 @@ def view_event(request, pk):
 	event = Event.objects.get(pk=pk)
 	return render(request, 'event/event.html', {'event': event}) 
 
+@login_required
 def going_to_event(request, pk):
 	"""Adds the request user to the list of users going to an event"""
 	event = Event.objects.get(pk=pk)
-	if request.user.event_set.filter(pk=pk).exists(): 
-		return redirect(reverse('view event', kwargs={'pk': pk}))
-	event.users.add(request.user)
-	event.save()
+	event.users.add(request.user.id)
 	return redirect(reverse('view event', kwargs={'pk': pk}))
 
 

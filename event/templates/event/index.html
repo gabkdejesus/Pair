@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 	<h1><center>Welcome to Pair</center></h1>
-	<p><center>Here are the events</center></p>
+	<h3><center>Here are the events!</center></h3>
 	{% for event in events %}
 	<p><center><a href="{% url 'view event' pk=event.id %}">{{ event.name }}</a></center></p>
 	{% endfor %}

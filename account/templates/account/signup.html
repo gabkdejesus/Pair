@@ -11,6 +11,7 @@
           <form method="post" novalidate>
             {% csrf_token %}
             {% include 'account/form.html' %}
+            {{ profile.as_p }}
             <button type="submit" class="btn btn-primary btn-block">Create an account</button>
           </form>
         </div>
