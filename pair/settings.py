@@ -27,6 +27,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 # Application definition
 
@@ -141,7 +143,6 @@ USE_TZ = True
 
 
 # Config for heroku
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
