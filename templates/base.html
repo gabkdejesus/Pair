@@ -17,6 +17,7 @@
 			<a class="navbar-brand" href="{% url 'index' %}">Pair</a>
 			<a class="navbar-item" href="{% url 'categories' %}">Categories</a>
 			<a href="{% url 'create event' %}" class="navbar-item">Create an Event</a>
+			<a href="https://github.com/gabkdejesus/Pair" target="_blank" class="navbar-item">Github</a>
 			{% if not request.user.is_authenticated %}
 			<a href="{% url 'signup' %}" class="ml-auto btn btn-outline-secondary">Sign up</a>
 			<a href="{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
