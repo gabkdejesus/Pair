@@ -25,7 +25,7 @@ SECRET_KEY = '66sw3p^ei9=rm6*nedrbi0$d+aaa3q%p4s%vb@bs=*(_=w12kf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'https://pair-web-app.herokuapp.com/']
 
 
 # Application definition
